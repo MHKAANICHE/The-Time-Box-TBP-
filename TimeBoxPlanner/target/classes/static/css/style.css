@@ -1,0 +1,36 @@
+@charset "ISO-8859-1";
+
+body {
+	background-color: #ACA9CB;
+	/* Set your desired background color */
+}
+
+.card {
+	margin-top: 50px;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+.container {
+	padding: 25px;
+	margin: 25px;
+	background-color: #F1DBDD;
+}
+
+.square-box {
+	max-width: 600px;
+	min-height: 600px;
+	/* 	border: 1px solid #666; */
+}
+
+.square-min-box {
+	max-width: 400px;
+	min-height: 200px;
+	/* 	border: 1px solid #666; */
+}
+
+.error {
+	color: red;
+}
