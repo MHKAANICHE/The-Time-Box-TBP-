@@ -62,80 +62,87 @@ body {
 					<h3>Brain Dump:</h3>
 					<!-- This section is shown for showTask -->
 					<c:if test="${optionShow==true}">
-					<form:form action="/task/${showTask.id}/edit" method="POST"
-						modelAttribute="showTask">
-						<table>
-							<tr>
-								<form:errors path="id" class="error"></form:errors>
-								<form:errors path="keyWords" class="error"></form:errors>
-								<form:errors path="description" class="error"></form:errors>
-								<form:errors path="priority" class="error"></form:errors>
-								<form:errors path="hour" class="error"></form:errors>
-								<form:errors path="minute" class="error"></form:errors>
-								<form:errors path="createdAt" class="error"></form:errors>
-								<form:errors path="updatedAt" class="error"></form:errors>
-							</tr>
-							<tr>
-								<td></td>
-								<td><form:radiobutton path="priority" label="Priority" value="true"></form:radiobutton></td>
-								<td><form:radiobutton path="priority" label="Not Priority" value="false"></form:radiobutton></td>
-							</tr>
-							<tr>
-								<td><form:label path="keyWords">Keyword</form:label></td>
-								<td><form:input path="keyWords"	placeholder="Enter your keyword"></form:input></td>
-							</tr>
-							<tr>
-								<td><form:label path="description">Description</form:label></td>
-								<td><form:textarea path="description" rows="25" cols="30"></form:textarea></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><input type="submit" value="Edit Task" /></td>
-								
-							</tr>
-							
-							
-						</table>
-					</form:form>
-					<td><button onClick="location.href='/task/${showTask.id}/delete'" >Delete Task</button>							
-								</td>
-					
+						<form:form action="/task/${showTask.id}/edit" method="POST"
+							modelAttribute="showTask">
+							<table>
+								<tr>
+									<form:errors path="id" class="error"></form:errors>
+									<form:errors path="keyWords" class="error"></form:errors>
+									<form:errors path="description" class="error"></form:errors>
+									<form:errors path="priority" class="error"></form:errors>
+									<form:errors path="hour" class="error"></form:errors>
+									<form:errors path="minute" class="error"></form:errors>
+									<form:errors path="createdAt" class="error"></form:errors>
+									<form:errors path="updatedAt" class="error"></form:errors>
+								</tr>
+								<tr>
+									<td></td>
+									<td><form:radiobutton path="priority" label="Priority"
+											value="true"></form:radiobutton></td>
+									<td><form:radiobutton path="priority" label="Not Priority"
+											value="false"></form:radiobutton></td>
+								</tr>
+								<tr>
+									<td><form:label path="keyWords">Keyword</form:label></td>
+									<td><form:input path="keyWords"
+											placeholder="Enter your keyword"></form:input></td>
+								</tr>
+								<tr>
+									<td><form:label path="description">Description</form:label></td>
+									<td><form:textarea path="description" rows="25" cols="30"></form:textarea></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input type="submit" value="Edit Task" /></td>
+
+								</tr>
+
+
+							</table>
+						</form:form>
+						<td><button
+								onClick="location.href='/task/${showTask.id}/delete'">Delete
+								Task</button></td>
+
 					</c:if>
-					
+
 					<!-- This section is shown for newTask -->
 					<c:if test="${optionShow==false}">
-					<form:form action="/saveNewTask" method="POST"
-						modelAttribute="newTask">
-						<table>
-							<tr>
-								<form:errors path="id" class="error"></form:errors>
-								<form:errors path="keyWords" class="error"></form:errors>
-								<form:errors path="description" class="error"></form:errors>
-								<form:errors path="priority" class="error"></form:errors>
-								<form:errors path="hour" class="error"></form:errors>
-								<form:errors path="minute" class="error"></form:errors>
-								<form:errors path="createdAt" class="error"></form:errors>
-								<form:errors path="updatedAt" class="error"></form:errors>
-							</tr>
-							<tr>
-								<td></td>
-								<td><form:radiobutton path="priority" label="Priority" value="true"></form:radiobutton></td>
-								<td><form:radiobutton path="priority" label="Not Priority" value="false"></form:radiobutton></td>
-							</tr>
-							<tr>
-								<td><form:label path="keyWords">Keyword</form:label></td>
-								<td><form:input path="keyWords"	placeholder="Enter your keyword"></form:input></td>
-							</tr>
-							<tr>
-								<td><form:label path="description">Description</form:label></td>
-								<td><form:textarea path="description" rows="25" cols="30"></form:textarea></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><input type="submit" value="Save new Task" /></td>
-							</tr>
-						</table>
-					</form:form>
+						<form:form action="/saveNewTask" method="POST"
+							modelAttribute="newTask">
+							<table>
+								<tr>
+									<form:errors path="id" class="error"></form:errors>
+									<form:errors path="keyWords" class="error"></form:errors>
+									<form:errors path="description" class="error"></form:errors>
+									<form:errors path="priority" class="error"></form:errors>
+									<form:errors path="hour" class="error"></form:errors>
+									<form:errors path="minute" class="error"></form:errors>
+									<form:errors path="createdAt" class="error"></form:errors>
+									<form:errors path="updatedAt" class="error"></form:errors>
+								</tr>
+								<tr>
+									<td></td>
+									<td><form:radiobutton path="priority" label="Priority"
+											value="true"></form:radiobutton></td>
+									<td><form:radiobutton path="priority" label="Not Priority"
+											value="false"></form:radiobutton></td>
+								</tr>
+								<tr>
+									<td><form:label path="keyWords">Keyword</form:label></td>
+									<td><form:input path="keyWords"
+											placeholder="Enter your keyword"></form:input></td>
+								</tr>
+								<tr>
+									<td><form:label path="description">Description</form:label></td>
+									<td><form:textarea path="description" rows="25" cols="30"></form:textarea></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input type="submit" value="Save new Task" /></td>
+								</tr>
+							</table>
+						</form:form>
 					</c:if>
 				</div>
 
@@ -150,28 +157,64 @@ body {
 							<th>:00</th>
 							<th>:30</th>
 						</thead>
+
 						<tbody>
-							<%
-							for (int i = 5; i < 24; i++) {
-							%>
-							<tr>
-								<td><%=i%></td>
-								<td><select>
-										<option>Empty</option>
-										<option>1. bla bla</option>
-										<option>2. bla bla</option>
-										<option>3. bla bla</option>
-								</select></td>
-								<td><select>
-										<option>Empty</option>
-										<option>1. bla bla</option>
-										<option>2. bla bla</option>
-										<option>3. bla bla</option>
-								</select></td>
-							</tr>
-							<%
-							}
-							%>
+							<c:forEach var="i" begin="5" end="23">
+								<tr>
+									<td>${i}</td>
+									
+									<!-- :00 -->
+									<td>
+										<ul>
+											<!-- this section to show scheduled task -->
+											<c:forEach var="task" items="${scheduledTaskMinute00}">
+												<c:if test="${task.hour.getHour().equals(i)}">
+													<li value="${task.id}"><span>${task.keyWords} </span>
+														<button
+															onClick="location.href='/cancelSchedule/${task.id}/task'">cancel</button>
+													</li>
+												</c:if>
+											</c:forEach>
+										</ul>
+										<form action="/schedule/${i}/minute00" method="POST" id="minute00_${i}">
+										<select name="selectedTask_id_Minute00" onchange="submitForm('minute00_${i}')">
+												<!-- this section  to show Empty or delete scheduled task-->
+												<option value="${task.id}">null</option>
+												<!-- this section  to show options of tasks to schedule -->
+												<c:forEach var="task" items="${notScheduledTask}">
+													<option value="${task.id}">${task.keyWords}</option>
+												</c:forEach>
+											</select>
+										</form>
+									</td>
+									
+									<!-- :30 -->
+									<td>
+										<ul>
+											<!-- this section to show scheduled task -->
+											<c:forEach var="task" items="${scheduledTaskMinute30}">
+												<c:if test="${task.hour.getHour().equals(i)}">
+													<li value="${task.id}"><span>${task.keyWords} </span>
+														<button
+															onClick="location.href='/cancelSchedule/${task.id}/task'">cancel</button>
+													</li>
+												</c:if>
+											</c:forEach>
+										</ul>
+										<form action="/schedule/${i}/minute30" method="POST" id="minute30_${i}">
+										<select name="selectedTask_id_Minute30" onchange="submitForm('minute30_${i}')">
+												<!-- this section  to show Empty or delete scheduled task-->
+												<option value="${task.id}">null</option>
+												<!-- this section  to show options of tasks to schedule -->
+												<c:forEach var="task" items="${notScheduledTask}">
+													<option value="${task.id}">${task.keyWords}</option>
+												</c:forEach>
+											</select>
+										</form>
+									</td>
+									
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -180,7 +223,9 @@ body {
 		<div class="container d-flex justify-content-start align-items-center">
 			<c:forEach var="task" items="${tasks}">
 				<button class="btn btn-primary" style="margin: 5px;"
-					onClick="location.href='/task/<c:out value="${task.id}/show"/>'"><c:out value="${task.keyWords}"/></button>
+					onClick="location.href='/task/<c:out value="${task.id}/show"/>'">
+					<c:out value="${task.keyWords}" />
+				</button>
 			</c:forEach>
 		</div>
 	</div>
@@ -203,5 +248,10 @@ body {
 	<!-- 	</div> -->
 	<!-- 	<!-- For any Bootstrap that uses JS -->
 	<!-- 	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
+	<script>
+		function submitForm(hour) {
+			document.getElementById(hour).submit();
+		}
+	</script>
 </body>
 </html>

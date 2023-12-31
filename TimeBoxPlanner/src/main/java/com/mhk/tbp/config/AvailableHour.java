@@ -30,5 +30,17 @@ public enum AvailableHour {
     public int getHour() {
         return hour;
     }
+    
+    public static AvailableHour getByHour(int hour) {
+        for (AvailableHour availableHour : values()) {
+            if (availableHour.getHour() == hour) {
+                return availableHour;
+            }
+        }
+        // If the hour is not found
+        throw new IllegalArgumentException("Invalid hour: " + hour);
+    }
+    
+    
 }
 
