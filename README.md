@@ -1,6 +1,6 @@
 # The-Time-Box-TBP-
-Daily Timebox Planner, ADHD Daily Schedule, Time Block Journal, To-Do List Planner,5am-11pm planner.
-Developped by #Mohamed Hamdi KAANICHE#, December 2023.
+Daily Timebox Planner, ADHD Daily Schedule, Time Block Journal, To-Do List Planner, 5am-11pm planner.<br>
+Developed by [Mohamed Hamdi KAANICHE](https://www.linkedin.com/in/mhkaaniche/), December 2023.
 
 # Version 1.01 
 Version 1.01 of the application introduces several key functionalities for task scheduling:
