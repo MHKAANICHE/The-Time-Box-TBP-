@@ -25,3 +25,16 @@ All functionalities and features are integrated into a single-page application.
 Users can perform task scheduling, view scheduled tasks, and unschedule tasks seamlessly within the same page.
 
 Overall, version 1.00 streamlines the task scheduling process, enhances user interaction with dynamic updates, and consolidates all application features into a cohesive and user-friendly single-page interface.
+
+# Extra Enhancement: Adding Styles, Dark Mode Toggle, and Code Cleanup
+
+**Changes:**
+- Added CSS styles for improved aesthetics.
+- Cleaned up code for better readability and maintainability.
+- Attributed IDs to various components in the HTML body.
+- Introduced a Dark Mode toggle button for improved user experience.
+- Implemented Dark Mode styles for a visually appealing alternative.
+
+**Notes:**
+- Styles applied to header, aside, main, footer, nav, article, section, textarea, input, and radio.
+- Responsive design adjustments for different screen widths.
