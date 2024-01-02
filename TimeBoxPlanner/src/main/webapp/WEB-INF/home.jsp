@@ -4,254 +4,389 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page isErrorPage="true"%>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Index</title>
-<!-- for Bootstrap CSS -->
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<!-- YOUR own local CSS -->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<!-- Your local CSS -->
 <link rel="stylesheet" href="/css/style.css" />
 <style>
-body {
-	background-color: #ACA9CB;
+
+body, html {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: Arial, sans-serif;
+	background-color: #FB938F; /* Light gray background color */
+	color: #333; /* Default text color */
+	transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-.square-box {
-	max-width: 600px;
-	min-height: 600px;
-	/* 	border: 1px solid #666; */
+header, aside, main, footer {
+	width: 80%;
+	max-width: 1200px;
+	margin: 0.1 auto;
+	padding: 1em;
+	box-sizing: border-box;
+	background-color: #F2CAC8; /* Light blue background color */
+	border-radius: 0.5em; /* Rounded corners */
+	box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
+	/* Box shadow for a subtle lift */
 }
 
-.square-min-box {
-	max-width: 400px;
-	min-height: 200px;
-	/* 	border: 1px solid #666; */
+nav, article {
+	width: 100%;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	background-color: #C36B85;
 }
+
+section {
+	width: 100%;
+	padding: 1em;
+	margin-bottom: 1em;
+	box-sizing: border-box;
+	background-color: #FDBB75; /* White background for sections */
+	border: 1px solid #DDDDDD; /* Light gray border */
+	border-radius: 0.5em; /* Rounded corners */
+	box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.1);
+	/* Box shadow for a subtle lift */
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+textarea, input, radio {
+	width: 100%;
+	padding: 0.5em;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+	border: 1px solid #DDDDDD;
+	border-radius: 0.2em;
+}
+
+/* Media queries for responsive design */
+@media only screen and (min-width: 600px) {
+	header, aside, main, footer {
+		width: 90%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	header, aside, main, footer {
+		width: 80%;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	header, aside, main, footer {
+		width: 70%;
+	}
+	article {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	section {
+		width: 48%;
+		margin-bottom: 1em;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	header, aside, main, footer {
+		width: 60%;
+	}
+}
+
+/* Dark mode styles */
+body.dark-mode, html.dark-mode {
+	background-color: #1D3752; /* Dark gray background color */
+	color: #e0e0e0; /* Light text color in dark mode */
+}
+
+header.dark-mode, aside.dark-mode, main.dark-mode, footer.dark-mode {
+	background-color: #214D72; /* Dark gray background color in dark mode */
+	border-color: #1a1a1a; /* Darker border color in dark mode */
+	color: #e0e0e0; /* Light text color for elements in dark mode */
+	box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.1);
+	/* Box shadow for a subtle lift */
+}
+
+nav.dark-mode, article.dark-mode, section.dark-mode {
+	background-color: #2C7695;
+	/* Dark gray background color for footer in dark mode */
+}
+
+select.dark-mode, option.dark-mode, button.dark-mode, textarea.dark-mode,
+	input.dark-mode, radio.dark-mode {
+	background-color: #50BFC3; /* Dark gray background color in dark mode */
+	border-color: #1a1a1a; /* Darker border color in dark mode */
+	color: #e0e0e0; /* Light text color for elements in dark mode */
+}
+
+#brainDumpFormErrorMessage{
+	color: red;
+}
+
 </style>
 </head>
 <body>
-
-	<div class="container d-flex justify-content-end align-items-center">
-		<button>Login</button>
-		<button>Register</button>
-	</div>
-
-	<div class="container">
-		<div
-			class="container d-flex justify-content-between align-items-center">
+	<header>
+		<section>
+			<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+		</section>
+		<section id="loginRegistrationSection">
+			<button id="loginButton">Login</button>
+			<button id="registerButton">Register</button>
+		</section>
+	</header>
+	<aside>
+		<section id="logoSection">
 			<h1>The Time Box</h1>
-			<div>
-				<label>Date:</label> <input type="date" />
-			</div>
-		</div>
-		<div class="row">
-			<div class=" col md-6 ">
-				<div class="container">
-					<h3>Top Priorities:</h3>
-					<ul>
-						<c:forEach var="priority" items="${priorities}">
-							<li>${priority.keyWords}</li>
+		</section>
+		<section id="selectDateSection">
+			<label id="dateLabel">Date:</label> <input id="dateInput" type="date" />
+		</section>
+	</aside>
+	<main>
+		<article id="tasksArticle">
+			<section id="topPrioritiesSection">
+				<h3>Top Priorities:</h3>
+				<ul id="prioritiesList">
+					<c:forEach var="priority" items="${priorities}">
+						<li id="priorityItem">${priority.keyWords}</li>
+					</c:forEach>
+				</ul>
+			</section>
+			<section id="tasksBublesSection">
+				<c:forEach var="task" items="${tasks}">
+					<button id="taskItemBuble"
+						onClick="location.href='/task/<c:out value="${task.id}/show"/>'">
+						<c:out value="${task.keyWords}" />
+					</button>
+				</c:forEach>
+			</section>
+			<section id="brainDumpSection">
+				<h3>Brain Dump:</h3>
+				<!-- This section is shown for showTask -->
+				<c:if test="${optionShow==true}">
+					<form:form id="brainDumpFormShow"
+						action="/task/${showTask.id}/edit" method="POST"
+						modelAttribute="showTask">
+						<table>
+							<tr>
+								<form:errors id="brainDumpFormErrorMessage" path="id"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="keyWords"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="description"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="priority"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="hour"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="minute"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="createdAt"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="updatedAt"></form:errors>
+							</tr>
+							<tr>
+								<td></td>
+								<td><form:radiobutton id="brainDumpRadioPriority"
+										path="priority" label="Priority" value="true"></form:radiobutton></td>
+								<td><form:radiobutton id="brainDumpRadioNotPriority"
+										path="priority" label="Not Priority" value="false"></form:radiobutton></td>
+							</tr>
+							<tr>
+								<td><form:label id="brainDumpLabelKeyWords" path="keyWords">Keyword</form:label></td>
+								<td><form:input id="brainDumpInputKeyWords" path="keyWords"
+										placeholder="Enter your keyword"></form:input></td>
+							</tr>
+							<tr>
+								<td><form:label id="brainDumpLabelDescription"
+										path="description">Description</form:label></td>
+								<td><form:textarea id="brainDumpTexteareaDescription"
+										path="description" rows="25" cols="30"></form:textarea></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input id="brainDumpButtonEdit" type="submit"
+									value="Edit Task" /></td>
+							</tr>
+						</table>
+					</form:form>
+					<td><button id="brainDumpButtonDelete"
+							onClick="location.href='/task/${showTask.id}/delete'">Delete
+							Task</button></td>
+				</c:if>
+
+				<!-- This section is shown for newTask -->
+				<c:if test="${optionShow==false}">
+					<form:form id="brainDumpFormNew" action="/saveNewTask"
+						method="POST" modelAttribute="newTask">
+						<table>
+							<tr>
+								<form:errors id="brainDumpFormErrorMessage" path="id"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="keyWords"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="description"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="priority"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="hour"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="minute"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="createdAt"></form:errors>
+								<form:errors id="brainDumpFormErrorMessage" path="updatedAt"></form:errors>
+							</tr>
+							<tr>
+								<td></td>
+								<td><form:radiobutton id="brainDumpRadioPriority"
+										path="priority" label="Priority" value="true"></form:radiobutton></td>
+								<td><form:radiobutton id="brainDumpRadioNotPriority"
+										path="priority" label="Not Priority" value="false"></form:radiobutton></td>
+							</tr>
+							<tr>
+								<td><form:label id="brainDumpLabelKeyWords" path="keyWords">Keyword</form:label></td>
+								<td><form:input id="brainDumpInputKeyWords" path="keyWords"
+										placeholder="Enter your keyword"></form:input></td>
+							</tr>
+							<tr>
+								<td><form:label id="brainDumpLabelDescription"
+										path="description">Description</form:label></td>
+								<td><form:textarea id="brainDumpTexteareaDescription"
+										path="description" rows="25" cols="30"></form:textarea></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input id="brainDumpButtonSaveNew" type="submit"
+									value="Save new Task" /></td>
+							</tr>
+						</table>
+					</form:form>
+				</c:if>
+			</section>
+		</article>
+
+		<article id="scheduleArticle">
+			<section id="ScheduleSection">
+				<h3 id="ScheduleTitle">Schedule:</h3>
+				<table id="ScheduleTable">
+					<thead>
+						<th></th>
+						<th>:00</th>
+						<th>:30</th>
+					</thead>
+					<tbody>
+						<c:forEach var="i" begin="5" end="23">
+							<tr>
+								<td>${i}</td>
+								<!-- :00 -->
+								<td>
+									<ul id="ScheduleTablePlannedTaskList">
+										<!-- this section to show scheduled task -->
+										<c:forEach var="task" items="${scheduledTaskMinute00}">
+											<c:if test="${task.hour.getHour().equals(i)}">
+												<li id="ScheduleTablePlannedTaskItem" value="${task.id}"><span>${task.keyWords}
+												</span>
+													<button id="ScheduleTableTaskPlannedButtonCancel"
+														onClick="location.href='/cancelSchedule/${task.id}/task'">cancel</button>
+												</li>
+											</c:if>
+										</c:forEach>
+									</ul>
+									<form action="/schedule/${i}/minute00" method="POST"
+										id="minute00_${i}">
+										<select id="ScheduleTableSelectTaskList"
+											name="selectedTask_id_Minute00"
+											onchange="submitForm('minute00_${i}')">
+											<!-- this section  to show Empty or delete scheduled task-->
+											<option id="ScheduleTableSelectTaskItem" value="${task.id}">null</option>
+											<!-- this section  to show options of tasks to schedule -->
+											<c:forEach var="task" items="${notScheduledTask}">
+												<option value="${task.id}">${task.keyWords}</option>
+											</c:forEach>
+										</select>
+									</form>
+								</td>
+
+								<!-- :30 -->
+								<td>
+									<ul id="ScheduleTablePlannedTaskList">
+										<!-- this section to show scheduled task -->
+										<c:forEach var="task" items="${scheduledTaskMinute30}">
+											<c:if test="${task.hour.getHour().equals(i)}">
+												<li id="ScheduleTablePlannedTaskItem" value="${task.id}"><span>${task.keyWords}
+												</span>
+													<button id="ScheduleTableTaskPlannedButtonCancel"
+														onClick="location.href='/cancelSchedule/${task.id}/task'">cancel</button>
+												</li>
+											</c:if>
+										</c:forEach>
+									</ul>
+
+									<form action="/schedule/${i}/minute30" method="POST"
+										id="minute30_${i}">
+										<select id="ScheduleTableSelectTaskList"
+											name="selectedTask_id_Minute30"
+											onchange="submitForm('minute30_${i}')">
+											<!-- this section  to show Empty or delete scheduled task-->
+											<option id="ScheduleTableSelectTaskItem" value="${task.id}">null</option>
+											<!-- this section  to show options of tasks to schedule -->
+											<c:forEach var="task" items="${notScheduledTask}">
+												<option value="${task.id}">${task.keyWords}</option>
+											</c:forEach>
+										</select>
+									</form>
+								</td>
+							</tr>
 						</c:forEach>
-					</ul>
-				</div>
-
-				<div class="container">
-					<h3>Brain Dump:</h3>
-					<!-- This section is shown for showTask -->
-					<c:if test="${optionShow==true}">
-						<form:form action="/task/${showTask.id}/edit" method="POST"
-							modelAttribute="showTask">
-							<table>
-								<tr>
-									<form:errors path="id" class="error"></form:errors>
-									<form:errors path="keyWords" class="error"></form:errors>
-									<form:errors path="description" class="error"></form:errors>
-									<form:errors path="priority" class="error"></form:errors>
-									<form:errors path="hour" class="error"></form:errors>
-									<form:errors path="minute" class="error"></form:errors>
-									<form:errors path="createdAt" class="error"></form:errors>
-									<form:errors path="updatedAt" class="error"></form:errors>
-								</tr>
-								<tr>
-									<td></td>
-									<td><form:radiobutton path="priority" label="Priority"
-											value="true"></form:radiobutton></td>
-									<td><form:radiobutton path="priority" label="Not Priority"
-											value="false"></form:radiobutton></td>
-								</tr>
-								<tr>
-									<td><form:label path="keyWords">Keyword</form:label></td>
-									<td><form:input path="keyWords"
-											placeholder="Enter your keyword"></form:input></td>
-								</tr>
-								<tr>
-									<td><form:label path="description">Description</form:label></td>
-									<td><form:textarea path="description" rows="25" cols="30"></form:textarea></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td><input type="submit" value="Edit Task" /></td>
-
-								</tr>
-
-
-							</table>
-						</form:form>
-						<td><button
-								onClick="location.href='/task/${showTask.id}/delete'">Delete
-								Task</button></td>
-
-					</c:if>
-
-					<!-- This section is shown for newTask -->
-					<c:if test="${optionShow==false}">
-						<form:form action="/saveNewTask" method="POST"
-							modelAttribute="newTask">
-							<table>
-								<tr>
-									<form:errors path="id" class="error"></form:errors>
-									<form:errors path="keyWords" class="error"></form:errors>
-									<form:errors path="description" class="error"></form:errors>
-									<form:errors path="priority" class="error"></form:errors>
-									<form:errors path="hour" class="error"></form:errors>
-									<form:errors path="minute" class="error"></form:errors>
-									<form:errors path="createdAt" class="error"></form:errors>
-									<form:errors path="updatedAt" class="error"></form:errors>
-								</tr>
-								<tr>
-									<td></td>
-									<td><form:radiobutton path="priority" label="Priority"
-											value="true"></form:radiobutton></td>
-									<td><form:radiobutton path="priority" label="Not Priority"
-											value="false"></form:radiobutton></td>
-								</tr>
-								<tr>
-									<td><form:label path="keyWords">Keyword</form:label></td>
-									<td><form:input path="keyWords"
-											placeholder="Enter your keyword"></form:input></td>
-								</tr>
-								<tr>
-									<td><form:label path="description">Description</form:label></td>
-									<td><form:textarea path="description" rows="25" cols="30"></form:textarea></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td><input type="submit" value="Save new Task" /></td>
-								</tr>
-							</table>
-						</form:form>
-					</c:if>
-				</div>
-
-			</div>
-			<div
-				class=" col md-6 d-flex justify-content-center align-items-center">
-				<div class="container">
-					<h3>Schedule:</h3>
-					<table class="table table-striped">
-						<thead>
-							<th></th>
-							<th>:00</th>
-							<th>:30</th>
-						</thead>
-
-						<tbody>
-							<c:forEach var="i" begin="5" end="23">
-								<tr>
-									<td>${i}</td>
-									
-									<!-- :00 -->
-									<td>
-										<ul>
-											<!-- this section to show scheduled task -->
-											<c:forEach var="task" items="${scheduledTaskMinute00}">
-												<c:if test="${task.hour.getHour().equals(i)}">
-													<li value="${task.id}"><span>${task.keyWords} </span>
-														<button
-															onClick="location.href='/cancelSchedule/${task.id}/task'">cancel</button>
-													</li>
-												</c:if>
-											</c:forEach>
-										</ul>
-										<form action="/schedule/${i}/minute00" method="POST" id="minute00_${i}">
-										<select name="selectedTask_id_Minute00" onchange="submitForm('minute00_${i}')">
-												<!-- this section  to show Empty or delete scheduled task-->
-												<option value="${task.id}">null</option>
-												<!-- this section  to show options of tasks to schedule -->
-												<c:forEach var="task" items="${notScheduledTask}">
-													<option value="${task.id}">${task.keyWords}</option>
-												</c:forEach>
-											</select>
-										</form>
-									</td>
-									
-									<!-- :30 -->
-									<td>
-										<ul>
-											<!-- this section to show scheduled task -->
-											<c:forEach var="task" items="${scheduledTaskMinute30}">
-												<c:if test="${task.hour.getHour().equals(i)}">
-													<li value="${task.id}"><span>${task.keyWords} </span>
-														<button
-															onClick="location.href='/cancelSchedule/${task.id}/task'">cancel</button>
-													</li>
-												</c:if>
-											</c:forEach>
-										</ul>
-										<form action="/schedule/${i}/minute30" method="POST" id="minute30_${i}">
-										<select name="selectedTask_id_Minute30" onchange="submitForm('minute30_${i}')">
-												<!-- this section  to show Empty or delete scheduled task-->
-												<option value="${task.id}">null</option>
-												<!-- this section  to show options of tasks to schedule -->
-												<c:forEach var="task" items="${notScheduledTask}">
-													<option value="${task.id}">${task.keyWords}</option>
-												</c:forEach>
-											</select>
-										</form>
-									</td>
-									
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="container d-flex justify-content-start align-items-center">
-			<c:forEach var="task" items="${tasks}">
-				<button class="btn btn-primary" style="margin: 5px;"
-					onClick="location.href='/task/<c:out value="${task.id}/show"/>'">
-					<c:out value="${task.keyWords}" />
-				</button>
-			</c:forEach>
-		</div>
-	</div>
-
-
-	<!-- 	<div -->
-	<!-- 		class="container square-box  -->
-	<!-- 		d-flex justify-content-center align-items-center "> -->
-
-	<!-- 		<div class="square-min-box d-flex align-items-center "> -->
-	<!-- 			<div> -->
-	<!-- 				<div class=" d-flex justify-content-center"> -->
-	<!-- 					<h1>Welcome to Lookify!</h1> -->
-	<!-- 				</div> -->
-	<!-- 				<div class=" d-flex justify-content-center"> -->
-	<!-- 					<a href="/dash">Start Looking</a> -->
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
-	<!-- 	<!-- For any Bootstrap that uses JS -->
-	<!-- 	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
+					</tbody>
+				</table>
+			</section>
+		</article>
+	</main>
+	<footer>
+		<nav></nav>
+		<nav></nav>
+		<nav>
+			Developed by <a href="https://www.linkedin.com/in/mhkaaniche/">MH
+				KAANICHE</a> - December 2023.
+		</nav>
+	</footer>
 	<script>
 		function submitForm(hour) {
 			document.getElementById(hour).submit();
 		}
+		// JavaScript to toggle dark mode
+        function toggleDarkMode() {
+            
+
+            // Toggle dark mode styles for specific elements without adding classes
+            document.querySelectorAll('section, nav, article,header, aside, main, footer,body, html').forEach(element => {
+                element.classList.toggle("dark-mode");
+            });
+            document.querySelectorAll('textarea, input, radio,ul,select,option,button').forEach(element => {
+                element.classList.toggle("dark-mode");
+            });
+        }
 	</script>
+	<!-- Bootstrap JS and Popper.js (if needed) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
 </body>
+
 </html>

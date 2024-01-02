@@ -1,36 +1,38 @@
-@charset "ISO-8859-1";
-
-body {
-	background-color: #ACA9CB;
-	/* Set your desired background color */
-}
-
-.card {
-	margin-top: 50px;
-}
-
-h1 {
-	margin-bottom: 20px;
-}
-
-.container {
-	padding: 25px;
-	margin: 25px;
-	background-color: #F1DBDD;
-}
-
-.square-box {
-	max-width: 600px;
-	min-height: 600px;
-	/* 	border: 1px solid #666; */
-}
-
-.square-min-box {
-	max-width: 400px;
-	min-height: 200px;
-	/* 	border: 1px solid #666; */
-}
-
-.error {
+#loginRegistrationSection
+#loginButton
+#registerButton
+#logoSection
+#selectDateSection
+#dateLabel
+#dateInput
+#tasksArticle
+#topPrioritiesSection
+#prioritiesList
+#priorityItem
+#tasksBublesSection
+#taskItemBuble
+#brainDumpSection
+#brainDumpFormNew
+#brainDumpFormShow
+#brainDumpFormErrorMessage{
 	color: red;
 }
+#brainDumpRadioPriority
+#brainDumpRadioNotPriority
+#brainDumpLabelKeyWords
+#brainDumpInputKeyWords
+#brainDumpLabelDescription
+#brainDumpTexteareaDescription
+#brainDumpButtonEdit
+#brainDumpButtonSaveNew
+#brainDumpButtonDelete 
+#scheduleArticle
+#ScheduleSection
+#ScheduleTitle
+#ScheduleTable
+#ScheduleTablePlannedTaskList
+#ScheduleTablePlannedItem
+#ScheduleTablePlannedButtonCancel
+#ScheduleTableSelectTaskList
+#ScheduleTableSelectTaskItem
+/*background-color: #ACA9CB;*/

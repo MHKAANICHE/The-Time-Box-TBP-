@@ -40,6 +40,7 @@ public class MainController {
 			model.addAttribute("scheduledTaskMinute00", taskServ.getAllByMinute(AvailableMinute.MINUTE_00));
 			model.addAttribute("scheduledTaskMinute30", taskServ.getAllByMinute(AvailableMinute.MINUTE_30));				
 			model.addAttribute("tasks", taskServ.getAll());
+			//model.addAttribute("selectedDate", dailyPlanServ.getById(null).getDate());
 			
 			// debug : 
 			//System.out.println("scheduledTask : " +  taskServ.getAllByMinute(AvailableMinute.MINUTE_00));
@@ -48,8 +49,18 @@ public class MainController {
 	}
 
 	@PostMapping("/saveNewTask")
-	public String saveTask(@Valid @ModelAttribute("newTask") Task newTask, BindingResult result) {
+	public String saveTask(@Valid @ModelAttribute("newTask") Task newTask, BindingResult result, Model model) {
 		if (result.hasErrors()) {
+			// initialise to false, to switch for newTask
+			boolean optionShow = false;
+						
+			// Model buckets for accessibility
+			model.addAttribute("optionShow", optionShow);
+			model.addAttribute("priorities", taskServ.getAllPriorities());
+			model.addAttribute("notScheduledTask", taskServ.getAllNonScheduledTasks());
+			model.addAttribute("scheduledTaskMinute00", taskServ.getAllByMinute(AvailableMinute.MINUTE_00));
+			model.addAttribute("scheduledTaskMinute30", taskServ.getAllByMinute(AvailableMinute.MINUTE_30));				
+			model.addAttribute("tasks", taskServ.getAll());
 			return "home.jsp";
 		}
 		taskServ.create(newTask);
@@ -168,5 +179,7 @@ public class MainController {
 	taskServ.update(task);
 	return "redirect:/home";
 	}
+	
+	
 
 }
