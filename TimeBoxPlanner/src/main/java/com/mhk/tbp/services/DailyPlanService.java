@@ -1,5 +1,6 @@
 package com.mhk.tbp.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,8 +45,18 @@ public class DailyPlanService {
 	}
 
 	// Find ALL
-	public List<DailyPlan> getAll() {
+	public List<DailyPlan> getAllScheduledDates() {
 		return dailyPlanRepo.findAll();
+	}
+
+	// Extra Query
+	public DailyPlan getByDate(Date date) {
+		Optional<DailyPlan> optionalDailyPlan = dailyPlanRepo.findByDate(date);
+		if (optionalDailyPlan.isEmpty()) {
+			return null;
+		} else {
+			return optionalDailyPlan.get();
+		}
 	}
 
 }

@@ -26,7 +26,7 @@ public class DailyPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotEmpty(message="Date is required!.")
+   
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date;
 

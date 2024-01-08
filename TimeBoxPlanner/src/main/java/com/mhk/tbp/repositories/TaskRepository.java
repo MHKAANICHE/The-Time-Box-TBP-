@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.mhk.tbp.config.AvailableMinute;
+import com.mhk.tbp.models.DailyPlan;
 import com.mhk.tbp.models.Task;
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Long> {
@@ -18,4 +19,9 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
 	List<Task> findAllByMinuteIsNull();
 	// Retrieve all Tasks that are affected to MINUTE_00
 	List<Task> findAllByMinute(AvailableMinute minute);
+	// Retrieve All Task by DailyPlan
+	List<Task> findAllByDailyPlan(DailyPlan dailyPlan);
+    List<Task> findAllByDailyPlanAndPriorityIsTrue(DailyPlan dailyPlan);
+    List<Task> findAllByDailyPlanAndMinuteIsNull(DailyPlan dailyPlan);
+    List<Task> findAllByDailyPlanAndMinute(DailyPlan dailyPlan,AvailableMinute minute );
 }

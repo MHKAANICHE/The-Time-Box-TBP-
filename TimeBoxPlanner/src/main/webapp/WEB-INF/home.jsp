@@ -18,7 +18,6 @@
 <!-- Your local CSS -->
 <link rel="stylesheet" href="/css/style.css" />
 <style>
-
 body, html {
 	margin: 0;
 	padding: 0;
@@ -138,10 +137,9 @@ select.dark-mode, option.dark-mode, button.dark-mode, textarea.dark-mode,
 	color: #e0e0e0; /* Light text color for elements in dark mode */
 }
 
-#brainDumpFormErrorMessage{
+#brainDumpFormErrorMessage {
 	color: red;
 }
-
 </style>
 </head>
 <body>
@@ -159,7 +157,33 @@ select.dark-mode, option.dark-mode, button.dark-mode, textarea.dark-mode,
 			<h1>The Time Box</h1>
 		</section>
 		<section id="selectDateSection">
-			<label id="dateLabel">Date:</label> <input id="dateInput" type="date" />
+			<c:forEach var="error" items="${errors.allErrors}">
+				<div class="error">${error.defaultMessage}</div>
+			</c:forEach>
+			<form:form id="scheduleDateForm" action="/DailyPlan/saveDate"
+				method="POST" modelAttribute="scheduledDay">
+				<!-- Show errors -->
+<%-- 				<c:forEach var="error" items="${errors.allErrors}"> --%>
+<%-- 					<div class="error">${error.defaultMessage}</div> --%>
+<%-- 				</c:forEach> --%>
+				
+				<form:label path="date" id="dateLabel">Date:</form:label>
+				<form:errors id="DateErrorMessage" path="date"></form:errors>
+				<form:input path="date" id="dateInput" type="date"
+					onchange="submitDate()" />
+			</form:form>
+		</section>
+		
+		<section id="listscheduledDates">
+			<c:forEach var="selectDate" items="${ScheduledDates}">
+				<button id="selectDate"
+					onClick="location.href='/scheduledDate/<c:out value="${selectDate.id}/show"/>'">
+					<fmt:formatDate value="${selectDate.date}" pattern="yyyy-MM-dd" />
+				</button>
+				<button id="deleteSelectedDate"
+					onClick="location.href='/scheduledDate/<c:out value="${selectDate.id}/delete"/>'">
+					-</button>
+			</c:forEach>
 		</section>
 	</aside>
 	<main>
@@ -354,11 +378,17 @@ select.dark-mode, option.dark-mode, button.dark-mode, textarea.dark-mode,
 		<nav></nav>
 		<nav></nav>
 		<nav>
-			Developed by <a href="https://www.linkedin.com/in/mhkaaniche/">MH
+			Developed by <a href="https://www.linkedin.com/in/mhkaaniche/">Mohamed
 				KAANICHE</a> - December 2023.
 		</nav>
 	</footer>
 	<script>
+		// Submit date script
+		function submitDate() {
+			document.getElementById('scheduleDateForm').submit();
+		}
+	
+		// Submit scheduleTask script
 		function submitForm(hour) {
 			document.getElementById(hour).submit();
 		}

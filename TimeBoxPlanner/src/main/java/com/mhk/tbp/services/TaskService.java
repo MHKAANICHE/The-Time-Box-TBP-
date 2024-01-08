@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mhk.tbp.config.AvailableMinute;
-import com.mhk.tbp.config.AvailableMinute;
+import com.mhk.tbp.models.DailyPlan;
 import com.mhk.tbp.models.Task;
 import com.mhk.tbp.repositories.TaskRepository;
 
@@ -45,16 +45,32 @@ public class TaskService {
 		return taskRepo.findAll();
 	}
 	
+	public List<Task> getAllbyDailyPlan(DailyPlan dailyPlan){
+	return taskRepo.findAllByDailyPlan(dailyPlan);
+	}
+	
 	// Extra Queries
 	public List<Task> getAllPriorities(){
 	return taskRepo.findAllByPriorityIsTrue();
 	}
 	
+	public List<Task> getAllPrioritiesByDailyPlan(DailyPlan dailyPlan){
+		return taskRepo.findAllByDailyPlanAndPriorityIsTrue(dailyPlan);
+		}
+	
 	public List<Task> getAllNonScheduledTasks(){
 	return taskRepo.findAllByMinuteIsNull();
 	}
 	
+	public List<Task> getAllNonScheduledTasksByDailyPlan(DailyPlan dailyPlan){
+		return taskRepo.findAllByDailyPlanAndMinuteIsNull(dailyPlan);
+		}
+	
 	public List<Task> getAllByMinute(AvailableMinute minute){
 	return taskRepo.findAllByMinute(minute);
+	}
+	
+	public List<Task> getAllByMinuteByDailyPlan(DailyPlan dailyPlan, AvailableMinute minute){
+	return taskRepo.findAllByDailyPlanAndMinute(dailyPlan,minute);
 	}
 }
