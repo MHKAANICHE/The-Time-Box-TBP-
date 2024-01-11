@@ -144,48 +144,19 @@ select.dark-mode, option.dark-mode, button.dark-mode, textarea.dark-mode,
 </head>
 <body>
 	<header>
-		<section>
-			<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-		</section>
-		<section id="loginRegistrationSection">
-			<button id="loginButton">Login</button>
-			<button id="registerButton">Register</button>
-		</section>
-	</header>
-	<aside>
 		<section id="logoSection">
 			<h1>The Time Box</h1>
 		</section>
-		<section id="selectDateSection">
-			<c:forEach var="error" items="${errors.allErrors}">
-				<div class="error">${error.defaultMessage}</div>
-			</c:forEach>
-			<form:form id="scheduleDateForm" action="/DailyPlan/saveDate"
-				method="POST" modelAttribute="scheduledDay">
-				<!-- Show errors -->
-<%-- 				<c:forEach var="error" items="${errors.allErrors}"> --%>
-<%-- 					<div class="error">${error.defaultMessage}</div> --%>
-<%-- 				</c:forEach> --%>
-				
-				<form:label path="date" id="dateLabel">Date:</form:label>
-				<form:errors id="DateErrorMessage" path="date"></form:errors>
-				<form:input path="date" id="dateInput" type="date"
-					onchange="submitDate()" />
-			</form:form>
-		</section>
-		
-		<section id="listscheduledDates">
-			<c:forEach var="selectDate" items="${ScheduledDates}">
-				<button id="selectDate"
-					onClick="location.href='/scheduledDate/<c:out value="${selectDate.id}/show"/>'">
-					<fmt:formatDate value="${selectDate.date}" pattern="yyyy-MM-dd" />
-				</button>
-				<button id="deleteSelectedDate"
-					onClick="location.href='/scheduledDate/<c:out value="${selectDate.id}/delete"/>'">
-					-</button>
-			</c:forEach>
-		</section>
-	</aside>
+		<section id="navSection">
+		<nav id="ToggleDarkMode">
+			<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+		</nav>
+		<nav id="loginRegistrationSection">
+			<button id="loginButton">Login</button>
+			<button id="registerButton">Register</button>
+		</nav>
+	</section>
+	</header>
 	<main>
 		<article id="tasksArticle">
 			<section id="topPrioritiesSection">
@@ -297,6 +268,34 @@ select.dark-mode, option.dark-mode, button.dark-mode, textarea.dark-mode,
 		</article>
 
 		<article id="scheduleArticle">
+			<section id="selectDateSection">
+				<c:forEach var="error" items="${errors.allErrors}">
+					<div class="error">${error.defaultMessage}</div>
+				</c:forEach>
+				<form:form id="scheduleDateForm" action="/DailyPlan/saveDate"
+					method="POST" modelAttribute="scheduledDay">
+					<!-- Show errors -->
+					<%-- 				<c:forEach var="error" items="${errors.allErrors}"> --%>
+					<%-- 					<div class="error">${error.defaultMessage}</div> --%>
+					<%-- 				</c:forEach> --%>
+
+					<form:label path="date" id="dateLabel">Date:</form:label>
+					<form:errors id="DateErrorMessage" path="date"></form:errors>
+					<form:input path="date" id="dateInput" type="date"
+						onchange="submitDate()" />
+				</form:form>
+			</section>
+			<section id="listscheduledDates">
+				<c:forEach var="selectDate" items="${ScheduledDates}">
+					<button id="selectDate"
+						onClick="location.href='/scheduledDate/<c:out value="${selectDate.id}/show"/>'">
+						<fmt:formatDate value="${selectDate.date}" pattern="yyyy-MM-dd" />
+					</button>
+					<button id="deleteSelectedDate"
+						onClick="location.href='/scheduledDate/<c:out value="${selectDate.id}/delete"/>'">
+						-</button>
+				</c:forEach>
+			</section>
 			<section id="ScheduleSection">
 				<h3 id="ScheduleTitle">Schedule:</h3>
 				<table id="ScheduleTable">
@@ -375,12 +374,14 @@ select.dark-mode, option.dark-mode, button.dark-mode, textarea.dark-mode,
 		</article>
 	</main>
 	<footer>
-		<nav></nav>
-		<nav></nav>
-		<nav>
-			Developed by <a href="https://www.linkedin.com/in/mhkaaniche/">Mohamed
-				KAANICHE</a> - December 2023.
-		</nav>
+		<section id="FooterSection">
+			<nav></nav>
+			<nav></nav>
+			<nav>
+				Developed by <a href="https://www.linkedin.com/in/mhkaaniche/">Mohamed 	KAANICHE</a> - December 2023.
+			</nav>
+				
+		</section>
 	</footer>
 	<script>
 		// Submit date script

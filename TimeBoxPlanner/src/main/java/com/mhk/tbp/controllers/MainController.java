@@ -30,14 +30,34 @@ public class MainController {
 	@Autowired
 	private TaskService taskServ;
 
+	@GetMapping("/tab")
+	public String tab () {
+	return "tab.jsp";
+	}
+	
+	@GetMapping("/login")
+	public String login () {
+	return "login.jsp";
+	}
+
 	@GetMapping("/home")
-	public String home(@ModelAttribute("newTask") Task newTask, @ModelAttribute("scheduleTask") Task scheduleTask,
+	public String gome(@ModelAttribute("newTask") Task newTask, @ModelAttribute("scheduleTask") Task scheduleTask,
 			Model model, HttpSession session) {
 		// option to switch jstl section
 		// initialise to false, to switch for newTask
 		boolean optionShow = false;
 		loadModelAttributesRoutine(model, session, optionShow);
 		return "home.jsp";
+	}
+
+	@GetMapping("/index")
+	public String index(@ModelAttribute("newTask") Task newTask, @ModelAttribute("scheduleTask") Task scheduleTask,
+			Model model, HttpSession session) {
+		// option to switch jstl section
+		// initialise to false, to switch for newTask
+		boolean optionShow = false;
+		loadModelAttributesRoutine(model, session, optionShow);
+		return "index.jsp";
 	}
 
 	@PostMapping("/saveNewTask")
@@ -47,13 +67,13 @@ public class MainController {
 			// initialise to false, to switch for newTask
 			boolean optionShow = false;
 			loadModelAttributesRoutine(model, session, optionShow);
-			return "home.jsp";
+			return "index.jsp";
 		}
 		if (session.getAttribute("scheduledDay") != null) {
 			newTask.setDailyPlan((DailyPlan) session.getAttribute("scheduledDay"));
 		}
 		taskServ.create(newTask);
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 
 	@GetMapping("/task/{id}/show")
@@ -63,24 +83,24 @@ public class MainController {
 		boolean optionShow = true;
 		model.addAttribute("showTask", taskServ.getById(id));
 		loadModelAttributesRoutine(model, session, optionShow);
-		return "home.jsp";
+		return "index.jsp";
 	}
 
 	@PostMapping("/task/{id}/edit")
-	public String editTask(@PathVariable("id") Long id, @ModelAttribute("showTask") Task editTask, BindingResult result,
+	public String editTask(@PathVariable("id") Long id, @Valid @ModelAttribute("showTask") Task editTask, BindingResult result,
 			Model model, HttpSession session) {
 		if (result.hasErrors()) {
 			// option to switch jstl section
 			boolean optionShow = true;
-			model.addAttribute("showTask", taskServ.getById(id));
+			model.addAttribute("showTask", editTask);
 			loadModelAttributesRoutine(model, session, optionShow);
-			return "home.jsp";
+			return "index.jsp";
 		}
 		if (session.getAttribute("scheduledDay") != null) {
 			editTask.setDailyPlan((DailyPlan) session.getAttribute("scheduledDay"));
 		}
 		taskServ.update(editTask);
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 
 	@GetMapping("/task/{id}/delete")
@@ -89,14 +109,14 @@ public class MainController {
 			// option to switch jstl section
 			boolean optionShow = true;
 			loadModelAttributesRoutine(model, session, optionShow);
-			return "home.jsp";
+			return "index.jsp";
 		}
 		taskServ.deleteByIt(id);
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 
 	@PostMapping("/schedule/{hour_id}/minute00")
-	public String scheduleTaskMinute00(@ModelAttribute("scheduleTask") Task scheduleTask,
+	public String scheduleTaskMinute00(
 			@PathVariable("hour_id") int hourId, // Use int instead of Long
 			@RequestParam("selectedTask_id_Minute00") Long selectedTask_id, HttpSession session) {
 
@@ -111,11 +131,11 @@ public class MainController {
 		}
 		taskServ.update(scheduledTask);
 
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 
 	@PostMapping("/schedule/{hour_id}/minute30")
-	public String scheduleTaskMinute30(@ModelAttribute("scheduleTask") Task scheduleTask,
+	public String scheduleTaskMinute30(
 			@PathVariable("hour_id") int hourId, // Use int instead of Long
 			@RequestParam("selectedTask_id_Minute30") Long selectedTask_id, HttpSession session) {
 
@@ -131,7 +151,7 @@ public class MainController {
 		}
 		taskServ.update(scheduledTask);
 
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 
 	@GetMapping("/cancelSchedule/{id}/task")
@@ -144,7 +164,7 @@ public class MainController {
 			task.setDailyPlan((DailyPlan) session.getAttribute("scheduledDay"));
 		}
 		taskServ.update(task);
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 
 	@PostMapping("/DailyPlan/saveDate")
@@ -155,7 +175,7 @@ public class MainController {
 			boolean optionShow = false;
 			model.addAttribute("newTask", new Task());
 			loadModelAttributesRoutine(model, session, optionShow);
-			return "home.jsp";
+			return "index.jsp";
 		}
 		
 		// if the selectedDate is allready used
@@ -180,7 +200,7 @@ public class MainController {
 //		        }
 //		    }
 
-			return "home.jsp";
+			return "index.jsp";
 		}
 		
 		// save all task for the selected Date
@@ -194,19 +214,19 @@ public class MainController {
 		// save the scheduledDate in session
 		session.setAttribute("scheduledDay", newscheduleDay);
 			
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 
 	@GetMapping("/scheduledDate/{selectedDate_id}/show")
 	public String showScheduledDailyPlan(@PathVariable("selectedDate_id") Long id, HttpSession session) {
 		session.setAttribute("scheduledDay", dailyPlanServ.getById(id));
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 	
 	@GetMapping("/scheduledDate/{selectedDate_id}/delete")
 	public String deleteScheduledDailyPlan(@PathVariable("selectedDate_id") Long id, HttpSession session) {
 		dailyPlanServ.deleteById(id);
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 
 	private void loadModelAttributesRoutine(Model model, HttpSession session, boolean optionShow) {
