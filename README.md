@@ -71,3 +71,44 @@ Implemented error handling for date conflicts.
 If a user attempts to use a date that is already in use, a user-friendly error message prompts them to choose a different date.
 
 Overall, version 1.01 builds upon the foundation of version 1.00, providing users with additional features for a more intuitive and efficient task scheduling experience.
+
+# Version 1.02
+Version 1.02 introduces additional features and enhancements:
+
+1 - Accordion Styling:
+Applied Bootstrap styling to the accordion elements.
+Ensured responsiveness across different screen sizes.
+
+2 - Scheduled Tasks Table:
+Bootstrap styling added to enhance the appearance.
+Made the table scrollable for better user experience.
+
+3 - Checkbox Styling:
+Bootstrap styling applied to the checkbox elements in the Top Priorities section.
+
+4 - Modal for Form Errors:
+Integrated a Bootstrap modal to display form errors.
+Form errors are shown as alert messages within the modal.
+
+5 - Dynamic Confetti Animation:
+Implemented a dynamic confetti animation triggered on checkbox change.
+jQuery used to handle checkbox change events and initiate the confetti effect.
+Addressed an issue where the animation stopped prematurely.
+
+6 - Auto-Opening Accordion Section:
+Modified the Top Priorities accordion section to auto-expand on page load.
+
+7 - Date Selection Buttons:
+Bootstrap buttons added for date selection.
+Improved styling for a more cohesive look.
+
+8 - Footer Styling:
+Applied Bootstrap styling to the footer for a cleaner appearance.
+
+9 - Miscellaneous:
+Addressed an issue with the display of form errors in the modal.
+
+Next Steps:
+Continue testing and refining the user interface.
+Ensure compatibility with various browsers and devices.
+Address any additional feedback and suggestions.
