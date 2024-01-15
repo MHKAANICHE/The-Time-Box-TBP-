@@ -38,11 +38,11 @@ If you'd like to contribute to this project, please follow our [Contribution Gui
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [APACHE 2 License](LICENSE).
 
 ## Contact
 
-For inquiries or support, please contact Mohamed KAANICHE at [your-email@example.com](mailto:mhkaaniche@gmail.com).
+For inquiries or support, please contact Mohamed KAANICHE at [mhkaaniche@gmail.com](mailto:mhkaaniche@gmail.com).
 
 
 
