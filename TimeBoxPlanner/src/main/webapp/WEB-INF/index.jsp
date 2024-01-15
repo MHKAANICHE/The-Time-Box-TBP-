@@ -11,11 +11,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Responsive Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link -->
+<!-- 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" -->
+<!-- 	rel="stylesheet" -->
+<!-- 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" -->
+<!-- 	crossorigin="anonymous"> -->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-	crossorigin="anonymous">
+	href="https://cdn.jsdelivr.net/gh/rajnandan1/brutopia@latest/dist/assets/compiled/css/app.css"
+	rel="stylesheet" crossorigin="anonymous">
+
+
 <title>Index</title>
 <!-- YOUR own local CSS -->
 <style>
@@ -74,6 +79,7 @@ footer {
 /* Hide the second image initially */
 #sunImage {
 	display: none;
+	filter: invert(1);
 }
 
 .moon-image {
@@ -82,6 +88,10 @@ footer {
 }
 
 /*Confeti*/
+.svg-confetti {
+	display: none;
+}
+
 .confetti {
 	left: 0;
 	pointer-events: none;
@@ -99,32 +109,111 @@ footer {
 	position: absolute;
 	transform: translate3d(0, 0, 0);
 	will-change: transform;
-	 animation: 2s 1s confetti-fall ease-in both;
-	
+	animation: 2s 1s confetti-fall ease-in both;
 }
 /* -------------------------------------
 /*   Keyframe Animations
 /* -------------------------------------
 
 /* ----- Confetti Fall ----- */
+@
+keyframes confetti-fall { 0% {
+	transform: translateY(-100%)
+}
 
-@keyframes confetti-fall {
-  0% {
-    transform: translateY(-100%)
-  }
-  95%{
-    animation-timing-function: ease-in-out;
-    transform: translateY(calc(100vh - 55%))
-  }
-  100% {
-    transform: translateY(calc(150vh - 65%))
-  }}
-  
+95
+
+
+%
+{
+animation-timing-function
+
+
+:
+
+
+ease-in-out
+;
+
+
+transform
+
+
+:
+
+
+translateY
+(
+
+
+calc
+(
+
+
+100vh
+
+
+-
+
+ 
+
+55
+%
+
+
+)
+
+
+)
+
+
+}
+100
+
+
+%
+{
+transform
+
+
+:
+
+
+translateY
+(
+
+
+calc
+(
+
+
+150vh
+
+
+-
+
+ 
+
+65
+%
+
+
+)
+
+
+)
+
+
+}
+}
+.invert-color {
+	filter: invert(1);
+}
 </style>
 </head>
 <body>
 	<!-- confetti -->
-	<svg class="dn">
+	<svg class="svg-confetti">
   <defs>
     <symbol id="svg-confetti">
       <path fill="currentColor"
@@ -135,36 +224,46 @@ footer {
 
 
 	<div class="header-blue">
-		<nav
-			class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-			<div class="container">
-				<a class="navbar-brand" href="#">The Time Box</a>
-				<button class="navbar-toggler" data-toggle="collapse"
-					data-target="#navcol-1">
-					<span class="sr-only">Toggle navigation</span><span
-						class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navcol-1">
-					<div class="form-check form-switch">
-						<input class="form-check-input visually-hidden" type="checkbox"
-							id="darkModeSwitch" onclick="toggleDarkMode()"> <label
-							class="form-check-label" for="darkModeSwitch"> <img
-							src="/images/moon.svg" alt="Moon Image" id="moonImage"
-							class="mode-image"> <img src="/images/sun.svg"
-							alt="Sun Image" id="sunImage" class="mode-image">
-						</label>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<div class="container col-12" >
+				<div class="row align-items-center col-12">
+					<!-- Navbar Brand (Title) -->
+					<div class="col-4">
+						<div class="navbar-brand">The Time Box</div>
 					</div>
-					<a href="#" class="login">Log In</a> <a
-						class="btn btn-light action-button" role="button" href="#">Sign
-						Up</a>
+					<!-- Space between Title and Buttons -->
+					<div class="col-3"></div>
+					<!-- Buttons (Login and Sign Up) -->
+					<div class="col-4 mt-3">
+						<a class="btn btn-light action-button me-2" role="button" href="#">Log
+							In</a> 
+							<a class="btn btn-light action-button" role="button" href="#">Sign
+							Up</a>
+					</div>
+					<!-- Navbar Toggler and Dark Mode Switch -->
+					<div class="col-1 text-end">
+						<button class="navbar-toggler" type="button"
+							data-toggle="collapse" data-target="#navcol-1">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="form-check form-switch d-inline-block ms-3">
+							<input class="form-check-input visually-hidden" type="checkbox"
+								id="darkModeSwitch" onclick="toggleDarkMode()"> <label
+								class="form-check-label" for="darkModeSwitch"> <img
+								src="/images/moon.svg" alt="Moon Image" id="moonImage"
+								class="mode-image"> <img src="/images/sun.svg"
+								alt="Sun Image" id="sunImage" class="mode-image">
+							</label>
+						</div>
+					</div>
 				</div>
 			</div>
 		</nav>
 	</div>
-	</div>
 
-	<main style="background-color: green">
-		<article id="tasksArticle">
+
+	<main  class=" bg-warning col-12">
+		<article id="tasksArticle" class="col-6">
 			<!-- Top Priorities Section -->
 			<div class="accordion" class="topPrioritiesSection">
 				<!-- Content Toggle Button -->
@@ -293,8 +392,7 @@ footer {
 													</div>
 
 													<button id="brainDumpButtonEdit" type="submit"
-														class="btn btn-primary">Edit Task</button>
-
+														class="btn btn-primary">Edit Task</button>										
 												</div>
 											</div>
 										</div>
@@ -336,7 +434,7 @@ footer {
 													<!-- Bootstrap form styling -->
 													<div class="mb-3">
 														<label path="priority" for="brainDumpRadioPriority"
-															class="form-label">Priority</label>
+															class="form-label"></label>
 
 														<div class="form-check">
 															<form:checkbox path="priority"
@@ -380,12 +478,8 @@ footer {
 
 		</article>
 
-		<article id="scheduleArticle">
+		<article id="scheduleArticle" class="col-6">
 			<!-- Select Date Section -->
-
-
-
-
 			<div class="accordion" id="SelectDateSection">
 				<!-- Content Toggle Button -->
 				<div class="accordion-item">
@@ -400,8 +494,9 @@ footer {
 						data-bs-parent="#SelectDateSection">
 						<div class="accordion-body">
 							<c:forEach var="error" items="${errors.allErrors}">
-								<div class="error">${error.defaultMessage}</div>
+								<div class="alert alert-danger" role="alert">${error.defaultMessage}</div>
 							</c:forEach>
+
 							<form:form id="scheduleDateForm" action="/DailyPlan/saveDate"
 								method="POST" modelAttribute="scheduledDay" class="mt-3">
 								<div class="mb-3">
@@ -555,7 +650,7 @@ footer {
 				</div>
 		</article>
 	</main>
-	<footer class="bg-warning">
+	<footer class="bg-warning col-12">
 		<section id="FooterSection" class="text-center py-3">
 			<p class="m-0">
 				Developed by <a href="https://www.linkedin.com/in/mhkaaniche/"
@@ -563,6 +658,22 @@ footer {
 			</p>
 		</section>
 	</footer>
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyJiFgPk/MmSBDmwK2F6b6D4t7IUZ+L2gN"
+		crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<!-- Neo Brutalism js -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyJiFgPk/MmSBDmwK2F6b6D4t7IUZ+L2gN"
+		crossorigin="anonymous"></script>
 
 	<script>
 // take the user at the same scroll position
@@ -590,7 +701,7 @@ footer {
   }
 </script>
 
-<script>
+	<script>
   function randomize(collection) {
     var randomNumber = Math.floor(Math.random() * collection.length);
     return collection[randomNumber];
@@ -639,22 +750,42 @@ footer {
     $("body").append($confettiItems);
   }
 </script>
-
 	<script>
-    function toggleDarkMode() {
-    	 localStorage.setItem('scrollPosition', window.scrollY);
-        var darkModeSwitch = document.getElementById("darkModeSwitch");
-        var moonImage = document.getElementById("moonImage");
-        var sunImage = document.getElementById("sunImage");
+	// Function to apply dark mode based on the provided state
+function applyDarkMode(isDarkMode) {
+    var moonImage = document.getElementById("moonImage");
+    var sunImage = document.getElementById("sunImage");
+    var body = document.body;
 
-        if (darkModeSwitch.checked) {
-            moonImage.style.display = "inline";
-            sunImage.style.display = "none";
-        } else {
-            moonImage.style.display = "none";
-            sunImage.style.display = "inline";
-        }
+    // Toggle the invert-color class on the body element
+    if (isDarkMode) {
+        body.classList.add("invert-color");
+        moonImage.style.display = "none";
+        sunImage.style.display = "inline";
+    } else {
+        body.classList.remove("invert-color");
+        moonImage.style.display = "inline";
+        sunImage.style.display = "none";
     }
+}
+
+// Function to toggle dark mode
+function toggleDarkMode() {
+    localStorage.setItem('scrollPosition', window.scrollY);
+    var darkModeSwitch = document.getElementById("darkModeSwitch");
+
+    // Toggle the dark mode based on the switch state
+    applyDarkMode(darkModeSwitch.checked);
+
+    // Save the current state to localStorage
+    localStorage.setItem('darkMode', darkModeSwitch.checked);
+}
+
+// On page load, apply dark mode based on the stored state
+document.addEventListener('DOMContentLoaded', function () {
+    var isDarkMode = localStorage.getItem('darkMode') === 'true';
+    applyDarkMode(isDarkMode);
+});
 
 //Submit date script
 function submitDate() {

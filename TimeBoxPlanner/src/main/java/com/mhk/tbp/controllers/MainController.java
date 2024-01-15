@@ -30,6 +30,12 @@ public class MainController {
 	@Autowired
 	private TaskService taskServ;
 
+	@GetMapping("/landingPage")
+	public String landingPage () {
+	return "landingPage.jsp";
+	}
+	
+
 	@GetMapping("/tab")
 	public String tab () {
 	return "tab.jsp";
