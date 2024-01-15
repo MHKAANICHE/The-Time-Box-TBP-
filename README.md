@@ -1,6 +1,51 @@
-# The-Time-Box-TBP-
-Daily Timebox Planner, ADHD Daily Schedule, Time Block Journal, To-Do List Planner, 5am-11pm planner.<br>
-Developed by [Mohamed KAANICHE](https://www.linkedin.com/in/mhkaaniche/), December 2023.
+# The-Time-Box-TBP
+
+"The-Time-Box-TBP" is a transformative timeboxing application developed by [Mohamed KAANICHE](https://www.linkedin.com/in/mhkaaniche/) in December 2023. This application is inspired by the groundbreaking timeboxing methodology as advocated by [Marc Zao-Sanders](https://hbr.org/2018/12/how-timeboxing-works-and-why-it-will-make-you-more-productive). It incorporates insights from a study conducted by tech company Filtered, recognized by [Harvard Business Review](https://www.businessinsider.com/i-tried-top-productivity-tip-time-managment-harvard-2022-6#:~:text=After%20tech%20company%20Filtered%20released,to%20see%20if%20it%20would) as the most useful productivity hack.
+
+## Overview
+
+"The-Time-Box-TBP" is not just an application; it's a transformative tool designed to enhance your productivity and time management skills. The methodology behind it is considered by Harvard Business Review as one of the most crucial skills for modern professionals.
+
+## Features
+
+- **Timeboxing Excellence:** Embrace the essence of timeboxing, a methodology endorsed by industry leaders.
+- **Insights from Filtered's Study:** Leverage findings from Filtered's study to enhance your time management skills.
+- **Harvard Business Review Acknowledgment:** Recognized by Harvard Business Review as a cornerstone in modern professional development.
+
+## Getting Started
+
+1. Clone the repository: `git clone https://github.com/yourusername/The-Time-Box-TBP.git`
+2. Navigate to the project directory: `cd The-Time-Box-TBP`
+3. Open the application in your preferred Java IDE.
+
+## Usage
+
+1. Compile and run the `TimeBoxApp.java` file.
+2. Follow the on-screen instructions to set up your timeboxing schedule.
+3. Enjoy a more productive and organized workday!
+
+## YouTube Short
+
+<p align="center">
+  <a href="https://www.youtube.com/shorts/pyRIuI_FkYM">
+    <img src="https://img.youtube.com/vi/pyRIuI_FkYM/0.jpg" alt="Watch The-Time-Box-TBP on YouTube">
+  </a>
+</p>
+
+## Contributing
+
+If you'd like to contribute to this project, please follow our [Contribution Guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For inquiries or support, please contact Mohamed KAANICHE at [your-email@example.com](mailto:mhkaaniche@gmail.com).
+
+
+
 
 # Version 1.00 
 Version 1.00 of the application introduces several key functionalities for task scheduling:
